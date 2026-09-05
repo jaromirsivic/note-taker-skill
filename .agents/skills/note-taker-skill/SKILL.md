@@ -143,11 +143,18 @@ Read the complete notes file.
 - Distinguish a harmless typo from an ambiguity that could materially change
   the requested work.
 
-### 3. Resolve every ambiguity
+### 3. Resolve every ambiguity and missing requirement
 
 Ask concise, numbered questions in the user's conversation language for every
 materially unclear, contradictory, or project-incompatible item. Questions may
 be grouped in one message when practical.
+
+Interrogate the intended change until the specification is implementation-ready.
+Do not limit clarification to contradictions already visible in the notes.
+Proactively identify missing decisions that could materially affect behavior,
+scope, user experience, data, integrations, compatibility, failure handling,
+testing, or acceptance criteria. Ask only questions that are applicable to the
+project and requested change, but do not leave a material assumption unstated.
 
 For every clarification round:
 
@@ -213,11 +220,30 @@ requirements from project facts and justified implementation guidance.
 Keep the original notes file unchanged. Delete the state marker only after the
 processed file has been created successfully.
 
-### 5. Present the result and request approval
+### 5. Present the saved result
 
-Reply in the user's conversation language with a concise summary, then print
-the complete processed notes content directly in chat. Ask whether the user
-wants implementation to start. Do not start implementation in the same turn.
+After the processed file has been created successfully, reply in the user's
+conversation language with:
+
+1. A concise, speech-friendly summary of the completed specification. Prefer
+   fewer than 200 words. Cover the objective, key
+   requested changes, important constraints, resolved decisions, and the most
+   important acceptance criteria. Do not reproduce the complete processed file
+   or copy long passages from it.
+2. One clickable Markdown link to the processed file.
+3. A brief question asking whether the user wants implementation to start.
+
+The restriction applies only to displaying the complete formal change request.
+Clarification questions from step 3 and the short final summary remain normal
+chat content.
+
+Prefer a link target that opens the file in Visual Studio Code, using a properly
+URI-encoded `vscode://file/<absolute-path>` target when the host supports and
+allows that URI scheme. Otherwise use the host's native clickable local-file
+link format, or a standard Markdown link to the absolute file path. Use natural
+link text in the user's conversation language that identifies the saved
+processed change request. Do not fall back to a plain, non-clickable path when
+the host can create a clickable local-file link.
 
 ## Implementation handoff
 

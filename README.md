@@ -18,7 +18,10 @@ Linux, and macOS.
    process the notes.
 5. Reads basic project context and asks about every material ambiguity.
 6. Creates a timestamped change request and archives the original notes.
-7. Shows the complete change request and asks before starting implementation.
+7. Shows a short summary and a clickable link to the saved change request, then
+   asks before starting implementation. It never duplicates the complete
+   change request in chat and prefers opening the Markdown file in Visual Studio
+   Code when the host supports that link scheme.
 
 All chat responses and generated change requests use the user's conversation
 language. All files distributed as part of this skill are written in English.
@@ -98,6 +101,14 @@ creates:
 
 The first file is the implementation-ready change request. The second is the
 archived original dictation. Both use the same local timestamp.
+
+Before writing the change request, the skill actively identifies and asks about
+missing implementation decisions as well as explicit ambiguities. After saving
+the file, it gives a concise summary, preferably under 200 words and never over
+400 words, followed by a clickable link and the implementation approval
+question. It does not duplicate the complete change request in chat. The link
+prefers Visual Studio Code when supported and otherwise uses the host's native
+local-file link format.
 
 ## State and recovery
 
